@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM TANGER | Ultra-Premium Fitness</title>
+    <meta name="description" content="La salle de sport la plus exclusive de Tanger. Coaching expert, design premium, résultats garantis.">
+    
+    <!-- Meta Tags -->
+    <meta property="og:title" content="GYM TANGER | Ultra-Premium Fitness">
+    <meta property="og:description" content="Transformez votre corps dans l'environnement le plus inspirant de Tanger.">
+    <meta property="og:image" content="hero_gym_cda.png">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "GYM TANGER",
+      "image": "hero_gym_cda.png",
+      "@id": "https://your-website.com",
+      "url": "https://your-website.com",
+      "telephone": "+212600000000",
+      "priceRange": "250DH - 700DH",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Gold Fitness, Avenue Mohammed VI",
+        "addressLocality": "Tanger",
+        "postalCode": "90000",
+        "addressCountry": "MA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.7767,
+        "longitude": -5.8039
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "07:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "09:00",
+          "closes": "14:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/yourgym",
+        "https://www.instagram.com/yourgym"
+      ]
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> 
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        brand: {
+                            orange: '#FF4500', // Neon Orange
+                            dark: '#09090b',   // Zinc-950 (Rich Black)
+                            gray: '#27272a'    // Zinc-800
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-white overflow-x-hidden antialiased selection:bg-brand-orange selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-display font-bold tracking-widest group">
+                GOLD<span class="text-brand-orange group-hover:text-white transition-colors">FITNESS</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-sm font-semibold uppercase tracking-widest hover:text-brand-orange transition-colors nav-link" data-key="nav.about">À Propos</a>
+                <a href="#services" class="text-sm font-semibold uppercase tracking-widest hover:text-brand-orange transition-colors nav-link" data-key="nav.services">Services</a>
+                <a href="#why-us" class="text-sm font-semibold uppercase tracking-widest hover:text-brand-orange transition-colors nav-link" data-key="nav.why">Pourquoi Nous</a>
+                <a href="#pricing" class="text-sm font-semibold uppercase tracking-widest hover:text-brand-orange transition-colors nav-link" data-key="nav.pricing">Tarifs</a>
+                <button onclick="openModal()" class="border border-brand-orange text-brand-orange px-6 py-2 rounded-none font-display font-bold uppercase hover:bg-brand-orange hover:text-white transition-all duration-300 tracking-wider">
+                    Rejoindre
+                </button>
+            </div>
+
+            <!-- Mobile Menu Btn -->
+            <button id="menu-btn" class="md:hidden text-2xl text-white hover:text-brand-orange transition-colors relative z-[110]" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars-staggered" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-black z-[100] transform translate-x-full transition-transform duration-300 flex flex-col justify-start pt-32 items-center space-y-8 md:hidden">
+            <!-- Close button removed (using toggle button instead) -->
+            <a href="#about" class="text-2xl font-display uppercase hover:text-brand-orange" onclick="toggleMobileMenu()" data-key="nav.about">About</a>
+            <a href="#services" class="text-2xl font-display uppercase hover:text-brand-orange" onclick="toggleMobileMenu()" data-key="nav.services">Services</a>
+            <a href="#pricing" class="text-2xl font-display uppercase hover:text-brand-orange" onclick="toggleMobileMenu()" data-key="nav.pricing">Tarifs</a>
+            <button onclick="toggleMobileMenu(); openModal()" class="text-brand-orange text-2xl font-display uppercase border-b-2 border-brand-orange pb-2">Rejoindre</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center pt-40 md:pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-orange/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <div class="badge inline-block px-3 py-1 border border-brand-orange/30 rounded-full text-brand-orange text-xs font-bold uppercase tracking-[0.2em] mb-6">
+                    Professional Fitness Center
+                </div>
+                <h1 class="font-display text-6xl md:text-8xl font-bold uppercase leading-[0.9] mb-8">
+                    Forge <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-red-600 text-glow">Your Legacy</span>
+                </h1>
+                <p class="text-zinc-400 text-lg mb-10 max-w-lg font-light leading-relaxed" id="hero-subtitle">
+                    <!-- Injected via JS -->
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="openModal()" class="bg-brand-orange text-white px-8 py-4 font-display font-bold uppercase tracking-widest hover:bg-orange-600 hover:shadow-[0_0_30px_rgba(255,69,0,0.4)] transition-all duration-300 clip-path-slant">
+                        Commencer Maintenant
+                    </button>
+                    <a href="#why-us" class="border border-white/20 text-white px-8 py-4 font-display font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300">
+                        Découvrir
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative" data-aos="fade-left" data-aos-duration="1200">
+                <div class="relative w-full max-w-lg mx-auto animate-float perspective-1000">
+                    <div class="absolute inset-0 bg-brand-orange rounded-full blur-[60px] opacity-20"></div>
+                     <!-- Using Image Placeholder if file not found, but trying to use local asset -->
+                    <img src="hero_gym_cda.png" alt="Gym Hero" class="relative z-10 w-full object-cover shadow-2xl rounded-sm transform rotate-3 hover:rotate-0 transition-transform duration-500 grayscale hover:grayscale-0">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-10 -left-10 bg-brand-dark/90 backdrop-blur border border-brand-orange/30 p-6 shadow-2xl z-20 hidden md:block">
+                        <div class="text-3xl font-display font-bold text-white mb-1">500+</div>
+                        <div class="text-xs text-zinc-400 uppercase tracking-widest">Membres Actifs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Selection -->
+    <section id="about" class="py-24 bg-brand-dark relative">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-up">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6" id="about-title">
+                        <!-- Injected via JS -->
+                    </h2>
+                    <p class="text-zinc-400 leading-relaxed mb-8 text-lg font-light" id="about-text">
+                        <!-- Injected via JS -->
+                    </p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <div class="text-4xl font-display font-bold text-brand-orange mb-2">15+</div>
+                            <div class="text-sm text-zinc-500 uppercase tracking-wider">Experts Coachs</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-display font-bold text-brand-orange mb-2">24/7</div>
+                            <div class="text-sm text-zinc-500 uppercase tracking-wider">Accès Membres</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4" data-aos="zoom-in">
+                    <img src="weightlifting_dark_cda.png" class="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded-lg translate-y-8">
+                    <img src="boxing_action_cda.png" class="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-500 rounded-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (3D Hover) -->
+    <section id="services" class="py-24 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-down">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase">Nos <span class="text-brand-orange">Services</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 perspective-1000" id="services-grid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us (3D Cube) -->
+    <section id="why-us" class="py-24 bg-brand-dark/50 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 flex flex-col justify-center items-center" data-aos="zoom-in">
+                <div class="cylinder-container mb-8">
+                    <div class="cylinder">
+                        <div class="cylinder-face face-1">COMMUNITY</div>
+                        <div class="cylinder-face face-2">STRENGTH</div>
+                        <div class="cylinder-face face-3">FOCUS</div>
+                        <div class="cylinder-face face-4">POWER</div>
+                        <div class="cylinder-face face-5">GYM</div>
+                        <div class="cylinder-face face-6">TANGER</div>
+                    </div>
+                </div>
+                <!-- Text under the 3D element -->
+                <p class="text-2xl font-display font-bold text-white uppercase tracking-widest text-center">Pourquoi Nous Choisir?</p>
+            </div>
+            <div class="order-1 md:order-2" data-aos="fade-left">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-8 hidden md:block">Pourquoi <span class="text-brand-orange">Nous Choisir?</span></h2>
+                <ul class="space-y-6" id="features-list">
+                    <!-- Injected via JS -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-black relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase">Abonnements <span class="text-brand-orange">Premium</span></h2>
+            </div>
+            
+            <!-- Swiper Container -->
+            <div class="swiper pricing-swiper pb-12">
+                <div class="swiper-wrapper" id="pricing-wrapper">
+                    <!-- Injected via JS -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-brand-dark relative overflow-hidden">
+         <!-- Background Glow -->
+         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[120px] pointer-events-none"></div>
+         
+         <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase">Notre <span class="text-brand-orange">Galerie</span></h2>
+                <p class="text-zinc-400 mt-4 max-w-2xl mx-auto">Plongez dans l'univers de la performance.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="gallery-grid">
+                <!-- Injected via JS -->
+            </div>
+         </div>
+    </section>
+
+    <!-- Location Map -->
+    <section id="map" class="relative h-[550px] w-full border-t border-brand-orange/20 overflow-hidden group">
+        <!-- Map Iframe with Filters -->
+        <iframe src="https://maps.google.com/maps?q=Gold+Fitness+Tanger&t=&z=17&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full grayscale-[70%] group-hover:grayscale-0 transition-all duration-700 ease-in-out" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        <!-- Overlay Gradient for text readability at bottom if needed -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none md:hidden"></div>
+
+        <!-- Floating Info Card -->
+        <div class="container mx-auto px-6 h-full flex items-end md:items-center relative z-10 pointer-events-none pb-12 md:pb-0">
+             <div class="bg-black/80 backdrop-blur-md p-8 max-w-md w-full border border-white/10 border-l-4 border-l-brand-orange shadow-2xl pointer-events-auto transform transition-transform duration-500 hover:scale-[1.02]" data-aos="fade-right">
+                 <h2 class="font-display text-3xl font-bold uppercase text-white mb-2">Notre <span class="text-brand-orange">QG</span></h2>
+                 <p class="text-zinc-400 text-sm mb-6 uppercase tracking-wider">Le temple de votre transformation</p>
+                 
+                 <div class="space-y-4 mb-8">
+                     <div class="flex items-start">
+                         <i class="fa-solid fa-location-dot text-brand-orange mt-1 w-6"></i>
+                         <span class="text-zinc-300">Gold Fitness, Tanger<br><span class="text-xs text-zinc-500">Avenue Mohammed VI</span></span>
+                     </div>
+                     <div class="flex items-center">
+                         <i class="fa-solid fa-clock text-brand-orange w-6"></i>
+                         <span class="text-zinc-300">Ouvert 24h/7j</span>
+                     </div>
+                 </div>
+
+                 <a href="https://www.google.com/maps/place/Gold+Fitness/@35.7674169,-5.831431,17z/data=!4m10!1m2!2m1!1sSalle+de+sport+tanger!3m6!1s0xd0b87440172b665:0x7578fb4393a57a75!8m2!3d35.7674169!4d-5.8275999!15sChVTYWxsZSBkZSBzcG9ydCB0YW5nZXJaFyIVc2FsbGUgZGUgc3BvcnQgdGFuZ2VykgEDZ3ltmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU51TFMwM01sSlJFQUXgAQD6AQQIABA_!16s%2Fg%2F11nmqsg5zj?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D" target="_blank" class="block w-full text-center bg-white text-black py-3 font-display font-bold uppercase tracking-widest hover:bg-brand-orange hover:text-white transition-all duration-300">
+                     Obtenir L'Itinéraire
+                 </a>
+             </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-3xl font-display font-bold tracking-widest text-white mb-6 block">
+                        GYM<span class="text-brand-orange">TANGER</span>
+                    </a>
+                    <p class="text-zinc-400 mb-8 max-w-md">
+                        L'expérience fitness ultime à Tanger. Nous combinons technologie, design et expertise pour vous offrir le meilleur.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center rounded-full hover:bg-brand-orange hover:border-brand-orange hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center rounded-full hover:bg-brand-orange hover:border-brand-orange hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 border border-white/20 flex items-center justify-center rounded-full hover:bg-brand-orange hover:border-brand-orange hover:text-white transition-all"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-display font-bold text-white uppercase mb-6 tracking-widest">Contact</h4>
+                    <ul class="space-y-4 text-zinc-400">
+                        <li class="flex items-center" id="footer-address"><i class="fa-solid fa-location-dot text-brand-orange mr-3 w-5"></i> Tanger Centre, Maroc</li>
+                        <li class="flex items-center" id="footer-phone"><i class="fa-solid fa-phone text-brand-orange mr-3 w-5"></i> +212 6 00 00 00 00</li>
+                        <li class="flex items-center" id="footer-email"><i class="fa-solid fa-envelope text-brand-orange mr-3 w-5"></i> info@gymtanger.com</li>
+                    </ul>
+                </div>
+                
+                <div>
+                     <h4 class="font-display font-bold text-white uppercase mb-6 tracking-widest">Horaires</h4>
+                     <ul class="space-y-4 text-zinc-400">
+                        <li class="flex justify-between"><span>Lun - Ven</span> <span>06:00 - 23:00</span></li>
+                        <li class="flex justify-between"><span>Samedi</span> <span>08:00 - 22:00</span></li>
+                        <li class="flex justify-between"><span>Dimanche</span> <span>09:00 - 20:00</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 text-center text-zinc-600 text-sm">
+                &copy; 2026 Gym Tanger. Designed with M.Bentaleb Mehdi
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Buttons -->
+    <a id="fixed-whatsapp-btn" href="#" class="fixed bottom-8 right-8 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg z-40 hover:scale-110 transition-transform animate-bounce">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal Popup -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-brand-dark border border-white/10 p-8 rounded-none w-full max-w-md relative transform scale-95 transition-transform duration-300" id="modal-content">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-zinc-500 hover:text-white">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+            
+            <h3 class="font-display text-3xl font-bold uppercase mb-2 text-white">Rejoignez <span class="text-brand-orange">L'Élite</span></h3>
+            <p class="text-zinc-400 mb-8 text-sm">Remplissez ce formulaire pour avoir votre pass.</p>
+            
+            <form id="inscription-form" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Nom Complet</label>
+                    <input type="text" required class="w-full bg-black/50 border border-white/10 p-3 text-white focus:border-brand-orange focus:outline-none transition-colors rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Téléphone</label>
+                    <input type="tel" required class="w-full bg-black/50 border border-white/10 p-3 text-white focus:border-brand-orange focus:outline-none transition-colors rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-zinc-500 mb-2">Pack Choisi</label>
+                    <select class="w-full bg-black/50 border border-white/10 p-3 text-white focus:border-brand-orange focus:outline-none transition-colors rounded-sm">
+                        <option>Basic Pass</option>
+                        <option>Pro Pass</option>
+                        <option>VIP Experience</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-brand-orange text-white py-4 font-display font-bold uppercase tracking-widest hover:bg-orange-600 transition-colors">
+                    Envoyer
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[200] bg-black/95 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeLightbox()">
+         <button class="absolute top-6 right-6 text-white text-4xl hover:text-brand-orange transition-colors z-[210] p-2" onclick="closeLightbox()">
+             <i class="fa-solid fa-xmark"></i>
+         </button>
+         <img id="lightbox-image" src="" alt="Full View" class="max-h-[90vh] max-w-[90vw] object-contain rounded-sm shadow-[0_0_50px_rgba(255,69,0,0.2)] transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
